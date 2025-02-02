@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rheanrhansnndasndhas</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        @font-face {
+            font-family: 'Open Sans Bold';
+            font-style: normal;
+            font-weight: 800;
+            src: url('fonts/OpenSans-Bold.woff') format('woff');
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: 'Open Sans Bold', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: red;
+            font-size: 2em;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        #yesBtn {
+            background-color: green;
+            color: white;
+            font-size: 18px;
+        }
+
+        #noBtn {
+            background-color: red;
+            color: white;
+        }
+
+        .gif_container {
+            margin-top: 20px;
+        }
+
+        .gif_container img {
+            width: 500px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="question">Will you be my Valentine?</h1>
+        
+        <div class="buttons">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+
+        <div class="gif_container">
+            <img id="gif1" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Happy Cat GIF" style="display: block;"> <!-- Set gif1 to show initially -->
+            <img id="gif2" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif" alt="Valentine's Surprise GIF" style="display: none;">
+        </div>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+        const gif1 = document.getElementById("gif1");
+        const gif2 = document.getElementById("gif2");
+        const questionText = document.getElementById("question");
+
+        yesBtn.addEventListener("click", function() {
+            gif1.style.display = "none";  // Hide the first GIF
+            gif2.style.display = "block"; // Show the second GIF
+            questionText.textContent = "Knew you would say yes!";  // Change the text
+            noBtn.style.display = "none"; // Hide the No button
+        });
+
+        noBtn.addEventListener("click", function() {
+            noClickCount++;
+
+            // Make the Yes button grow each time No is clicked
+            let newSize = 18 + (noClickCount * 10); // Increase font size
+            yesBtn.style.fontSize = newSize + "px";
+            yesBtn.style.padding = (10 + noClickCount * 2) + "px " + (20 + noClickCount * 2) + "px";
+
+            // Change No button text dynamically
+            const noTexts = ["Are you sure?", "Sure?", "Really sure?", "Last chance!", "😠 Just say YES!"];
+            noBtn.textContent = noTexts[Math.min(noClickCount - 1, noTexts.length - 1)];
+        });
+    </script>
+
+</body>
+</html>
