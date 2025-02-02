@@ -66,6 +66,12 @@
             width: 500px;
             display: none;
         }
+
+        #hahaText {
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -77,6 +83,8 @@
             <button id="yesBtn">Yes</button>
             <button id="noBtn">No</button>
         </div>
+
+        <div id="hahaText"></div> <!-- To display the 'HAHAHA' text -->
 
         <div class="gif_container">
             <img id="gif1" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Happy Cat GIF" style="display: block;"> <!-- Set gif1 to show initially -->
@@ -91,6 +99,7 @@
         const gif1 = document.getElementById("gif1");
         const gif2 = document.getElementById("gif2");
         const questionText = document.getElementById("question");
+        const hahaText = document.getElementById("hahaText");
 
         yesBtn.addEventListener("click", function() {
             gif1.style.display = "none";  // Hide the first GIF
@@ -110,6 +119,10 @@
             // Change No button text dynamically
             const noTexts = ["Are you sure?", "Sure?", "Really sure?", "Last chance!", "😠 Just say YES!"];
             noBtn.textContent = noTexts[Math.min(noClickCount - 1, noTexts.length - 1)];
+
+            // Display increasing "HAHAHA" text
+            let hahaString = "HAHAHAHAHA".repeat(noClickCount); // Repeat the "HAHAHA" string
+            hahaText.textContent = hahaString;
         });
     </script>
 
